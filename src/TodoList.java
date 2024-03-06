@@ -1,5 +1,5 @@
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 public class TodoList {
 
     private String owner;
@@ -48,8 +48,15 @@ public class TodoList {
      */
     public String mostUrgent() {
 
-        return null;
+        Task mostUrgentTask = tasks.get(0);
+        for (int i = 1; i < tasks.size(); i++) {
+            Task currentTask = tasks.get(i);
+            if (currentTask.getUrgency() > mostUrgentTask.getUrgency()) {
+                mostUrgentTask = currentTask;
+            }
+        }
 
+        return mostUrgentTask.getName();
     }
 
     /**
@@ -57,9 +64,11 @@ public class TodoList {
      * @return the average urgency across all tasks (a double).
      */
     public double averageUrgency() {
-
-        return 0.0;
-
+        double sum = 0;
+        for (Task task : tasks) {
+            sum += task.getUrgency();
+        }
+        return sum / tasks.size();
     }
 
     /**
@@ -76,6 +85,8 @@ public class TodoList {
      *
      * BONUS Challenge:  Sort your to-do list in descending order of urgency
      */
+
+    /* not doing this one */
     public String toString() {
 
         return "";
